@@ -64,3 +64,6 @@ fi
 variable1=$(date)
 echo " $variable1" >> logfile
 cat logfile
+
+
+// comment add 
