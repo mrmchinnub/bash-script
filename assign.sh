@@ -1,11 +1,12 @@
- #!/bin/bash
-#creating a dircetory named ProjectData
+#! /bin/bash
+# creating a dircetory named ProjectData
+cd
 dict_name=ProjectData
 if [ ! -d "$dict_name" ];then
   mkdir "$dict_name"
   ls
 else
-   echo "diretory created"
+   echo "directory created"
    ls
 fi
 cd ProjectData
@@ -34,6 +35,7 @@ for i in {1..10}
  do
    echo "$random_data" > file$i.txt
    cat file$i.txt
+
  done
 cd ..
 cd Reports
@@ -41,20 +43,21 @@ cd Reports
 echo "creating a summary.txt file in Reports for appending no.of lines in each file"
 if [ ! -e summary.txt ]; then
    touch  summary.txt
-else 
+else
+   rm summary.txt
+   touch summary.txt 
    echo "summary.txt is created"
-   cat summary.txt
 fi
 cd ..
 cd Data
 #counting no of lines in each file and append those into summary.txt
 for i in {1..10}
  do
-  echo "no of lines in each filei.txt is $(wc -l file$i.txt)" >> /home/xpmini04/ProjectData/Reports/summary.txt 
+  echo "no of lines in each file is $(wc -l file$i.txt)" >> ~/ProjectData/Reports/summary.txt
  done
+cat ~/ProjectData/Reports/summary.txt
 cd ..
 cd Logs
-rm logfile
 echo "creating a file for recording date and time when the file processing script was run"
 if [ -e logfile ];then
    touch logfile
@@ -62,5 +65,5 @@ else
    echo "Logfile created"
 fi
 variable1=$(date)
-echo " $variable1" >> logfile
+echo "file processing script was run: $variable1" >> logfile
 cat logfile
